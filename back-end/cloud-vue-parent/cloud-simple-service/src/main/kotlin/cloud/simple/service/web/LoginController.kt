@@ -1,39 +1,25 @@
 package cloud.simple.service.web;
 
-import java.awt.image.BufferedImage;
-import java.util.UUID;
-
-import javax.imageio.ImageIO;
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.google.code.kaptcha.impl.DefaultKaptcha;
-
-import cloud.simple.service.contants.Constant;
-import cloud.simple.service.domain.SysAdminMenuService;
-import cloud.simple.service.domain.SysAdminRuleService;
-import cloud.simple.service.domain.SysAdminUserService;
-import cloud.simple.service.model.SysAdminRule;
-import cloud.simple.service.model.SysAdminUser;
-import cloud.simple.service.util.EncryptUtil;
-import cloud.simple.service.util.FastJsonUtils;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
+import cloud.simple.service.contants.Constant
+import cloud.simple.service.domain.SysAdminMenuService
+import cloud.simple.service.domain.SysAdminRuleService
+import cloud.simple.service.domain.SysAdminUserService
+import cloud.simple.service.model.SysAdminUser
+import cloud.simple.service.util.EncryptUtil
+import cloud.simple.service.util.FastJsonUtils
+import com.google.code.kaptcha.impl.DefaultKaptcha
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiOperation
+import org.apache.commons.codec.digest.DigestUtils
+import org.apache.commons.lang3.StringUtils
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.*
+import java.util.*
+import javax.imageio.ImageIO
+import javax.servlet.http.Cookie
+import javax.servlet.http.HttpServletRequest
+import javax.servlet.http.HttpServletResponse
+import javax.servlet.http.HttpSession
 
 /**
  * 登录控制层
@@ -68,19 +54,19 @@ class LoginController : CommonController(){
 			return FastJsonUtils.resultError(-100, "账号不能为空", null);
 		}
 		record.password= DigestUtils.md5Hex(record.password);
-		val adminUser: SysAdminUser? = sysAdminUserService!!.selectOne(record);
-		if(adminUser==null) {
+		val adminUser: SysAdminUser? = sysAdminUserService?.selectOne(record);
+		if(adminUser?.toString()==null) {
 			return FastJsonUtils.resultError(-100, "帐号与密码错误不正确", null);
 		}
-		if(adminUser.status!!.compareTo(1.toByte()) != 0 ) {
+		if(adminUser?.status?.compareTo(1.toByte()) == 1 ) {
 			return FastJsonUtils.resultError(-100, "帐号已被禁用", null);
 		}
-		val authKey = EncryptUtil.encryptBase64(adminUser.username+"|"+adminUser.password, Constant.SECRET_KEY);
+		val authKey = EncryptUtil.encryptBase64(adminUser?.username+"|"+adminUser?.password, Constant.SECRET_KEY);
 		// 返回信息
 		data.put("rememberKey", authKey);
 		data.put("authKey", authKey);
 		data.put("sessionId", request.getSession().getId());
-		data.put("userInfo", adminUser);
+		data.put("userInfo", adminUser!!);
 		val rulesTreeList = sysAdminRuleService!!.getTreeRuleByUserId(adminUser.id!!);
 		val rulesList = sysAdminRuleService!!.rulesDeal(rulesTreeList);
 		data.put("rulesList", rulesList);
@@ -99,14 +85,14 @@ class LoginController : CommonController(){
 	@ApiOperation(value = "重新登录", notes = "", httpMethod = "POST")
 	//@ApiImplicitParams(value = arrayOf(@ApiImplicitParam(name = "rememberKey", value ="登录成功后的授权码", required = true, dataType = "String")))
 	@RequestMapping(value = "/relogin", produces = arrayOf("application/json;charset=UTF-8"))
-	fun  relogin(rememberKey: String, request: HttpServletRequest): String {
+	fun  reLogin(rememberKey: String, request: HttpServletRequest): String {
 		val rememberValue = EncryptUtil.decryptBase64(rememberKey, Constant.SECRET_KEY);
 		val splits = rememberValue.split("|");
 		val record = SysAdminUser();
 		record.username=splits[0];
 		record.password=splits[1];
-		var user = sysAdminUserService!!.selectOne(record);
-		if(user == null) {
+		var user = sysAdminUserService?.selectOne(record);
+		if(user?.toString() == null) {
 			return FastJsonUtils.resultError(-400, "重新登录失败", null);
 		}
 		return FastJsonUtils.resultSuccess(200, "重新登录成功", null);
@@ -150,7 +136,7 @@ class LoginController : CommonController(){
             e.printStackTrace();  
         }  
   
-        val bi = captchaProducer!!.createImage(capText);
+        val bi = captchaProducer?.createImage(capText);
         val out = response.getOutputStream();
         ImageIO.write(bi, "jpg", out);  
         try {  

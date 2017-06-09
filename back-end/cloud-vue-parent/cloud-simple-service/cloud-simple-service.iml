@@ -3,41 +3,98 @@
   <component name="AutoImportedSourceRoots">
     <option name="directories">
       <list>
-        <option value="D:\开源代码\spring-cloud-vue(kotlin)\back-end\cloud-vue-parent\cloud-simple-service/src/main/kotlin" />
-        <option value="D:\开源代码\spring-cloud-vue(kotlin)\back-end\cloud-vue-parent\cloud-simple-service/src/test/kotlin" />
+        <option value="E:\spring-cloud-vue(kotlin)\spring-cloud-vue-kotlin\back-end\cloud-vue-parent\cloud-simple-service/src/main/kotlin" />
+        <option value="E:\spring-cloud-vue(kotlin)\spring-cloud-vue-kotlin\back-end\cloud-vue-parent\cloud-simple-service/src/test/kotlin" />
       </list>
     </option>
   </component>
   <component name="FacetManager">
-    <facet type="Spring" name="Spring">
-      <configuration />
-    </facet>
     <facet type="kotlin-language" name="Kotlin">
-      <configuration version="2" platform="JVM 1.6" useProjectSettings="false">
-        <compilerSettings />
-        <compilerArguments>
-          <option name="jvmTarget" value="1.6" />
-          <option name="languageVersion" value="1.0" />
-          <option name="apiVersion" value="1.0" />
-          <option name="pluginClasspaths">
-            <array />
-          </option>
-          <option name="coroutinesWarn" value="true" />
-          <option name="pluginOptions">
-            <array />
-          </option>
-        </compilerArguments>
+      <configuration version="1">
+        <option name="compilerInfo">
+          <KotlinCompilerInfo>
+            <option name="compilerSettings">
+              <CompilerSettings>
+                <option name="additionalArguments" value="-version" />
+                <option name="copyJsLibraryFiles" value="true" />
+                <option name="outputDirectoryForJsLibraryFiles" value="lib" />
+              </CompilerSettings>
+            </option>
+            <option name="k2jsCompilerArguments">
+              <K2JSCompilerArguments>
+                <option name="outputFile" />
+                <option name="noStdlib" value="false" />
+                <option name="libraryFiles" />
+                <option name="sourceMap" value="false" />
+                <option name="metaInfo" value="false" />
+                <option name="kjsm" value="false" />
+                <option name="target" />
+                <option name="moduleKind" />
+                <option name="main" />
+                <option name="outputPrefix" />
+                <option name="outputPostfix" />
+                <option name="languageVersion" />
+                <option name="apiVersion" />
+                <option name="suppressWarnings" value="false" />
+                <option name="verbose" value="false" />
+                <option name="version" value="false" />
+                <option name="help" value="false" />
+                <option name="extraHelp" value="false" />
+                <option name="noInline" value="false" />
+                <option name="repeat" />
+                <option name="pluginClasspaths" />
+                <option name="pluginOptions" />
+                <option name="freeArgs">
+                  <list />
+                </option>
+                <option name="unknownExtraFlags">
+                  <list />
+                </option>
+              </K2JSCompilerArguments>
+            </option>
+            <option name="_commonCompilerArguments">
+              <DummyImpl>
+                <option name="languageVersion" />
+                <option name="apiVersion" />
+                <option name="suppressWarnings" value="false" />
+                <option name="verbose" value="false" />
+                <option name="version" value="false" />
+                <option name="help" value="false" />
+                <option name="extraHelp" value="false" />
+                <option name="noInline" value="false" />
+                <option name="repeat" />
+                <option name="pluginClasspaths">
+                  <array />
+                </option>
+                <option name="pluginOptions">
+                  <array />
+                </option>
+                <option name="freeArgs">
+                  <list />
+                </option>
+                <option name="unknownExtraFlags">
+                  <list />
+                </option>
+              </DummyImpl>
+            </option>
+          </KotlinCompilerInfo>
+        </option>
+        <option name="versionInfo">
+          <KotlinVersionInfo>
+            <option name="apiLevel" value="1.0" />
+            <option name="languageLevel" value="1.0" />
+            <option name="targetPlatformName" value="JVM 1.6" />
+          </KotlinVersionInfo>
+        </option>
       </configuration>
     </facet>
   </component>
-  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/kotlin" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/test/resources" type="java-test-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -181,7 +238,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:jconsole:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_60/lib/jconsole.jar!/" />
+          <root url="jar://C:/Java/jdk1.8.0_25/jre/../lib/jconsole.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -190,7 +247,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.alibaba:tools:1.8.0">
         <CLASSES>
-          <root url="jar://C:/Program Files/Java/jdk1.8.0_60/lib/tools.jar!/" />
+          <root url="jar://C:/Java/jdk1.8.0_25/jre/../lib/tools.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

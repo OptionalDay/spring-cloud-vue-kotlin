@@ -9,7 +9,6 @@ import tk.mybatis.mapper.common.Mapper
 import tk.mybatis.mapper.entity.Example
 import tk.mybatis.mapper.entity.Example.Criteria
 import java.util.Map
-import java.util.Map.Entry
 
 abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	
@@ -18,7 +17,7 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	open abstract fun getMapper(): Mapper<T>;
 
 
-	override open fun selectOne(record: T): T ? {
+	override open fun selectOne(record: T?): T ? {
 		var results = getMapper().select(record);
 		if(CollectionUtils.isNotEmpty(results)) return results[0]
 		else return null
@@ -28,7 +27,7 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	 * @param record 影响行数
 	 * @return list 列表
 	 */
-	override fun select(record: T) : List<T> {
+	override fun select(record: T?) : List<T> {
 		return getMapper().select(record) as List<T>
     }
 
@@ -38,8 +37,8 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	 * @param orderSqlStr 排序条件 （name ase,id desc）
 	 * @return List 列表
 	 */
-	override open fun  select(record: T, orderSqlStr: String): List<T>{
-		val example: Example = Example(record.javaClass,false);
+	override open fun  select(record: T?, orderSqlStr: String?): List<T>{
+		val example: Example = Example(record?.javaClass,false);
 		val criteria: Criteria = example.createCriteria();
 		val map: Map<String, String>
 		try {
@@ -60,7 +59,7 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	 * @param record 对象
 	 * @return int  影响行数
 	 */
-	override fun selectCount(record: T): Int {
+	override fun selectCount(record: T?): Int {
 		return getMapper().selectCount(record);
 	}
 
@@ -160,7 +159,7 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	 * @param record 对象
 	 * @return PageInfo 分页对象
 	 */
-	override fun selectPage(pageNum: Int, pageSize: Int, record: T): PageInfo<T> {
+	override fun selectPage(pageNum: Int, pageSize: Int, record: T?): PageInfo<T> {
 		PageHelper.startPage<T>(pageNum, pageSize)
 		return PageInfo<T>(getMapper().select(record));
 	}
@@ -173,8 +172,8 @@ abstract class BaseServiceImpl< T: BaseEntity> : BaseService<T>{
 	 * @param orderSqlStr (如:id desc)
 	 * @return PageInfo 分页对象
 	 */
-	override fun  selectPage(pageNum: Int, pageSize: Int, record: T,orderSqlStr: String):PageInfo<T> {
-		val example = Example(record.javaClass,false);
+	override fun  selectPage(pageNum: Int, pageSize: Int, record: T?,orderSqlStr: String):PageInfo<T> {
+		val example = Example(record?.javaClass,false);
 		val criteria = example.createCriteria();
 		val map: Map<String, Object>;
 		try {

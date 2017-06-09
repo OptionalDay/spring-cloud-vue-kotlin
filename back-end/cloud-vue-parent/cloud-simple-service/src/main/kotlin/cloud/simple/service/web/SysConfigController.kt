@@ -27,7 +27,7 @@ class SysConfigController : CommonController(){
 	
 	@ApiOperation(value = "获取配置", httpMethod="POST")
 	@PostMapping(value = "/configs", produces = arrayOf("application/json;charset=UTF-8"))
-	fun configs(@RequestBody(required=false)  record: SysSystemConfig, request: HttpServletRequest): String {
+	fun configs(@RequestBody(required=false)  record: SysSystemConfig?, request: HttpServletRequest): String {
 		val data = mutableMapOf<String,String>()
 		val configs = sysSystemConfigService!!.select(record);
 		for (c in configs) {

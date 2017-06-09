@@ -13,14 +13,14 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象 对象
 	 * @return List
 	 */
-	open fun select(record: T): List<T>?
+	 fun select(record: T?): List<T>?
 
 	/**
 	 * 根据实体类不为null的字段查询总数,条件全部使用=号and条件
 	 * @param record 对象 对象
 	 * @return List
 	 */
-	open fun selectCount(record: T): Int?
+	 fun selectCount(record: T?): Int?
 
 	/**
 	 * 根据主键进行查询,必须保证结果唯一
@@ -29,7 +29,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param key 主键
 	 * @return T
 	 */
-	open fun  selectByPrimaryKey(key: Any): T?
+	 fun  selectByPrimaryKey(key: Any): T?
 
 	/**
 	 *  插入一条数据
@@ -38,7 +38,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return int 受影响的行
 	 */
-	open fun  insert(record: T): Int?
+	 fun  insert(record: T): Int?
 
 	/**
 	 * 插入一条数据,只插入不为null的字段,不会影响有默认值的字段
@@ -47,14 +47,14 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return int 受影响的行
 	 */
-	open fun  insertSelective(record: T): Int?
+	 fun  insertSelective(record: T): Int?
 
 	/**
 	 * 根据实体类不为null的字段进行查询,条件全部使用=号and条件
 	 * @param record 对象
 	 * @return int 受影响的行
 	 */
-	open fun delete(record: T): Int?
+	 fun delete(record: T): Int?
 
 	/**
 	 * 通过主键进行删除,这里最多只会删除一条数据
@@ -63,7 +63,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param key 主键
 	 * @return int 受影响的行
 	 */
-	open fun deleteByPrimaryKey(key: Any): Int?
+	 fun deleteByPrimaryKey(key: Any): Int?
 
 	/**
 	 *根据主键进行更新,这里最多只会更新一条数据
@@ -71,7 +71,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return int 受影响的行
 	 */
-	open fun updateByPrimaryKey(record: T): Int?
+	 fun updateByPrimaryKey(record: T): Int?
 
 	/**
 	 *根据主键进行更新
@@ -79,7 +79,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return int 受影响的行
 	 */
-	open fun updateByPrimaryKeySelective(record: T): Int?
+	 fun updateByPrimaryKeySelective(record: T): Int?
 
 
 	/**
@@ -87,7 +87,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return int 影响行数
 	 */
-	open fun save(record: T): Int?
+	 fun save(record: T): Int?
 
 	/**
 	 *(单表分页可排序)
@@ -96,7 +96,7 @@ interface BaseService<T: BaseEntity> {
 	 * @param record 对象
 	 * @return PageInfo 分页对象
 	 */
-	open fun selectPage(pageNum: Int, pageSize: Int,record: T): PageInfo<T>?
+	 fun selectPage(pageNum: Int, pageSize: Int,record: T?): PageInfo<T>?
 
 
 	/**
@@ -107,14 +107,14 @@ interface BaseService<T: BaseEntity> {
 	 * @param orderSqlStr (如:id desc)
 	 * @return PageInfo 分页对象
 	 */
-	open fun selectPage(pageNum: Int, pageSize: Int, record: T,orderSqlStr: String): PageInfo<T>?
+	 fun selectPage(pageNum: Int, pageSize: Int, record: T?,orderSqlStr: String): PageInfo<T>?
 
 	/**
 	 * 根据实体类不为null的字段进行查询,条件全部使用=号and条件
 	 * @param record
 	 * @return
 	 */
-	open fun selectOne(record: T): T?
+	 fun selectOne(record: T?): T?
 
-	open fun  select(record: T, orderSqlStr: String): List<T>?
+	 fun  select(record: T?, orderSqlStr: String?): List<T>?
 }
